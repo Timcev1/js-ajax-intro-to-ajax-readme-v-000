@@ -1,5 +1,6 @@
 function showRepositories(event, data) {
-  console.log(this.responseText)
+  var repos = JSON.parse(this.responseText)
+  console.log(repos)
   let repoList = "<ul>"
   for(var i=0;i < this.responseText.length; i++) {
     repoList += "<li>" + this.responseText[i]["name"] + "</li>"
@@ -7,6 +8,7 @@ function showRepositories(event, data) {
   repoList += "</ul>"
   document.getElementById("repositories").innerHTML = repoList
 }
+
 function getRepositories() {
   const req = new XMLHttpRequest()
   req.open("GET", 'https://api.github.com/users/octocat/repos')
